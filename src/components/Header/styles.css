@@ -24,7 +24,12 @@
 
 .header--darkmode {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.header--icon--dark {
+  font-size: 1.4em;
+  margin-right: 10px;
 }
