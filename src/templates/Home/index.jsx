@@ -4,7 +4,7 @@ import consumApi from '../../consumApi';
 import Header from '../../components/Header';
 import Main from '../../components/Main';
 
-function App() {
+function Home() {
   const [allCountries, setAllCountries] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
