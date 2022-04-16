@@ -20,8 +20,7 @@ function Home() {
   return (
     <div className="App">
       <Header />
-      <Main />
-      <div>{allCountries.length >= 1 && allCountries[0].items[0].name}</div>
+      <Main allCountries={allCountries} />
     </div>
   );
 }

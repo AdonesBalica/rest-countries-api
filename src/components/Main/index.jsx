@@ -1,21 +1,33 @@
 import React from 'react';
 import './styles.css';
-
+import CardCoutries from '../CardCountries/index';
+import P from 'prop-types';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-function Main() {
+function Main({ allCountries }) {
   return (
     <main className="main--container">
       <div className="main--container--input">
-        <AiOutlineSearch />
+        <AiOutlineSearch className="main--icon--search" />
         <input className="main--input" type="text" placeholder="Search for a country..." />
       </div>
-      {/* <select name="coutries">
-        <option value="exempla"></option>
-      </select> */}
-      {/* dai aqui vai os componente de card */}
+      <div className="main--container--select">
+        <select name="select-countries" className="main--select" id="select-countries">
+          <option value="value">Filter By Region</option>
+          <option value="africa">Africa</option>
+          <option value="america">America</option>
+          <option value="asia">Asia</option>
+          <option value="europe">Europe</option>
+          <option value="oceania">Oceania</option>
+        </select>
+      </div>
+      <CardCoutries allCountries={allCountries} />
     </main>
   );
 }
+
+Main.propTypes = {
+  allCountries: P.array,
+};
 
 export default Main;
