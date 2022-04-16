@@ -61,7 +61,7 @@
   padding: 10px 15px;
 }
 
-@media (min-width: 415px) {
+@media (min-width: 426px) {
   .main--input--select {
     display: flex;
     align-items: center;

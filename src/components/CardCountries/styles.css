@@ -50,7 +50,7 @@
 }
 
 /* responsive */
-@media (min-width: 415px) {
+@media (min-width: 426px) {
   .cards--container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 280px);
