@@ -4,31 +4,28 @@ import './styles.css';
 
 function CardCountries({ allCountries }) {
   return (
-    <>
+    <section className="cards--container">
       {allCountries.length >= 1 &&
         allCountries[0].items.map((item, key) => (
-          <div key={key} className="card--container">
-            <div className="card--content">
-              <div className="card--flag--container">
-                <img src={item.flag} alt={`flag ${item.name}`} />
-              </div>
-              <div className="card-countrie--info">
-                <div className="card--name">{item.name}</div>
-                <div className="card--population">
-                  <span>Population:</span> {item.population}
-                </div>
-                <div className="card--region">
-                  <span>Region: </span>
-                  {item.region}
-                </div>
-                <div className="card--capital">
-                  <span>Capital:</span> {item.capital}
-                </div>
-              </div>
+          <div className="countrie--infor" key={key}>
+            <div className="countrie--flag--container">
+              <img src={item.flags.png} className="countrie--flag" alt={item.name} />
+            </div>
+            <div className="countries--details">
+              <p className="countries--name">{item.name}</p>
+              <p className="countries--population">
+                <span>Population:</span> {item.population}
+              </p>
+              <p className="countries--region">
+                <span>Region:</span> {item.region}
+              </p>
+              <p className="countries--capital">
+                <span>Capital:</span> {item.capital}
+              </p>
             </div>
           </div>
         ))}
-    </>
+    </section>
   );
 }
 

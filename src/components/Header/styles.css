@@ -19,7 +19,7 @@
 }
 
 .header--container div {
-  height: inherit;
+  height: 100%;
 }
 
 .header--darkmode {
