@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import CardCoutries from '../CardCountries/index';
 import P from 'prop-types';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 function Main({ allCountries }) {
+  const [selectByRegion, setSelectByRegion] = useState([]);
+
+  const handleChange = (event) => {
+    if (event.target.value === 'FilterByRegion') return setSelectByRegion(allCountries);
+    const selectFilter = allCountries[0].items.filter((item) => item.region == event.target.value);
+    // tentaremos fazer um filter aqui com base na option selecionada;
+    setSelectByRegion([{ slug: 'select', items: [...selectFilter] }]);
+  };
+
   return (
     <main className="main--container">
       <div className="main--input--select">
@@ -13,17 +22,38 @@ function Main({ allCountries }) {
           <input className="main--input" type="text" placeholder="Search for a country..." />
         </div>
         <div className="main--container--select">
-          <select name="select-countries" className="main--select" id="select-countries">
-            <option value="value">Filter By Region</option>
-            <option value="africa">Africa</option>
-            <option value="america">America</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="oceania">Oceania</option>
+          <select
+            name="select-countries"
+            className="main--select"
+            id="select-countries"
+            onChange={(event) => handleChange(event)}
+          >
+            <option value="FilterByRegion" name="FilterByRegion">
+              Filter By Region
+            </option>
+            <option value="Africa" name="africa">
+              Africa
+            </option>
+            <option value="Americas" name="america">
+              America
+            </option>
+            <option value="Asia" name="asia">
+              Asia
+            </option>
+            <option value="Europe" name="europe">
+              Europe
+            </option>
+            <option value="Oceania" name="oceania">
+              Oceania
+            </option>
           </select>
         </div>
       </div>
-      <CardCoutries allCountries={allCountries} />
+      {selectByRegion.length === 0 ? (
+        <CardCoutries allCountries={allCountries} />
+      ) : (
+        <CardCoutries allCountries={selectByRegion} />
+      )}
     </main>
   );
 }
