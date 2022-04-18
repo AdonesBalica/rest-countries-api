@@ -5,13 +5,20 @@ import P from 'prop-types';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 function Main({ allCountries }) {
-  const [selectByRegion, setSelectByRegion] = useState([]);
+  const [filtersBySelectOrInputText, setFiltersBySelectOrInputText] = useState([]);
 
   const handleChange = (event) => {
-    if (event.target.value === 'FilterByRegion') return setSelectByRegion(allCountries);
+    if (event.target.value === 'FilterByRegion') return setFiltersBySelectOrInputText(allCountries);
     const selectFilter = allCountries[0].items.filter((item) => item.region == event.target.value);
     // tentaremos fazer um filter aqui com base na option selecionada;
-    setSelectByRegion([{ slug: 'select', items: [...selectFilter] }]);
+    setFiltersBySelectOrInputText([{ slug: 'select', items: [...selectFilter] }]);
+  };
+
+  const handleInputChange = (event) => {
+    const searchTextInput = allCountries[0].items.filter((item) =>
+      item.name.toLowerCase().includes(event.target.value.toLowerCase()),
+    );
+    setFiltersBySelectOrInputText([{ slug: 'searchTextInput', items: [...searchTextInput] }]);
   };
 
   return (
@@ -19,7 +26,12 @@ function Main({ allCountries }) {
       <div className="main--input--select">
         <div className="main--container--input">
           <AiOutlineSearch className="main--icon--search" />
-          <input className="main--input" type="text" placeholder="Search for a country..." />
+          <input
+            className="main--input"
+            type="text"
+            placeholder="Search for a country..."
+            onChange={() => handleInputChange(event)}
+          />
         </div>
         <div className="main--container--select">
           <select
@@ -49,10 +61,10 @@ function Main({ allCountries }) {
           </select>
         </div>
       </div>
-      {selectByRegion.length === 0 ? (
+      {filtersBySelectOrInputText.length === 0 ? (
         <CardCoutries allCountries={allCountries} />
       ) : (
-        <CardCoutries allCountries={selectByRegion} />
+        <CardCoutries allCountries={filtersBySelectOrInputText} />
       )}
     </main>
   );
