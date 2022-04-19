@@ -8,6 +8,10 @@ body {
   width: 100%;
 }
 
+.Home {
+  height: 100vh;
+}
+
 .darkModeBackgroung {
   background-color: hsl(207, 26%, 17%);
 }

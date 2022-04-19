@@ -10,20 +10,38 @@ function Home() {
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
+    localStorage.setItem('darkMode', !darkMode);
+    console.log('state', !darkMode);
   };
+
+  useEffect(() => {
+    const setTheme = () => {
+      const flag = localStorage.getItem('darkMode');
+      console.log('flag', flag);
+      switch (flag) {
+        case 'false':
+          setDarkMode(false);
+          break;
+        case 'true':
+          setDarkMode(true);
+          break;
+        default:
+          break;
+      }
+    };
+    setTheme();
+  }, []);
 
   useEffect(() => {
     const loadCountries = async () => {
       const response = await consumApi.getCountriesList();
       setAllCountries(response);
     };
-
     loadCountries();
   }, []);
 
-  allCountries.length >= 1 && console.log(allCountries);
   return (
-    <div className={`App ${darkMode ? 'darkModeBackgroung' : ''}`}>
+    <div className={`Home ${darkMode ? 'darkModeBackgroung' : ''}`}>
       <Header darkMode={darkMode} handleDarkMode={handleDarkMode} />
       <Main darkMode={darkMode} allCountries={allCountries} />
     </div>
