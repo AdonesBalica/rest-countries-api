@@ -49,6 +49,12 @@
   margin-bottom: 3px;
 }
 
+/*Dark mode*/
+.darkModeCard {
+  background: hsl(207, 26%, 17%);
+  color: hsl(0, 0%, 100%);
+}
+
 /* responsive */
 @media (min-width: 426px) {
   .cards--container {

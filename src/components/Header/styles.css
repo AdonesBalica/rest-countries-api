@@ -31,5 +31,11 @@
 
 .header--icon--dark {
   font-size: 1.4em;
+  cursor: pointer;
   margin-right: 10px;
+}
+
+.darkMode {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
 }

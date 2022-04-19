@@ -2,9 +2,9 @@ import React from 'react';
 import P from 'prop-types';
 import './styles.css';
 
-function CardCountries({ allCountries }) {
+function CardCountries({ allCountries, darkMode }) {
   return (
-    <section className="cards--container">
+    <section className={`cards--container ${darkMode ? 'darkModeCard' : ''}`}>
       {allCountries.length >= 1 &&
         allCountries[0].items.map((item, key) => (
           <div className="countrie--infor" key={key}>
@@ -34,6 +34,7 @@ CardCountries.propTypes = {
   items: P.shape({
     item: P.array,
   }),
+  darkMode: P.bool,
 };
 
 export default CardCountries;

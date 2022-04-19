@@ -6,6 +6,11 @@ import Main from '../../components/Main';
 
 function Home() {
   const [allCountries, setAllCountries] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   useEffect(() => {
     const loadCountries = async () => {
@@ -18,9 +23,9 @@ function Home() {
 
   allCountries.length >= 1 && console.log(allCountries);
   return (
-    <div className="App">
-      <Header />
-      <Main allCountries={allCountries} />
+    <div className={`App ${darkMode ? 'darkModeBackgroung' : ''}`}>
+      <Header darkMode={darkMode} handleDarkMode={handleDarkMode} />
+      <Main darkMode={darkMode} allCountries={allCountries} />
     </div>
   );
 }
