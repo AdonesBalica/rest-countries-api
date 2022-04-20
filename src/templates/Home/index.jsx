@@ -11,13 +11,11 @@ function Home() {
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
     localStorage.setItem('darkMode', !darkMode);
-    console.log('state', !darkMode);
   };
 
   useEffect(() => {
     const setTheme = () => {
       const flag = localStorage.getItem('darkMode');
-      console.log('flag', flag);
       switch (flag) {
         case 'false':
           setDarkMode(false);
