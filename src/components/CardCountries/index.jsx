@@ -15,7 +15,7 @@ function CardCountries({ allCountries, darkMode }) {
             <Link
               to={{
                 pathname: '/AboutFlag',
-                hash: `#${item.alpha3Code}`,
+                hash: `#${item.alpha2Code}`,
               }}
             >
               <div className="countrie--flag--container">

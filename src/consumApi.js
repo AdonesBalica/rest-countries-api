@@ -15,4 +15,12 @@ export default {
       },
     ];
   },
+  getCountrieDetails: async (code) => {
+    return [
+      {
+        slug: 'details',
+        items: await basicFetch(`/alpha/${code}`),
+      },
+    ];
+  },
 };
